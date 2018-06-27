@@ -13,6 +13,10 @@ In order to import the database, set the user/password on env.php and run
 ```
 php artisan migrate
 ```
+You would probably have to install all the Laravel dependencies through Composer running
+```
+composer install
+```
 
 ### Mail application setup
 
@@ -94,6 +98,12 @@ namespace inbox {
 ssl=required
 ssl_cert = </etc/ssl/certs/server.pem
 ssl_key = </etc/ssl/certs/exmachinis.com.key
+```
+####Notes about certificates
+When installing or replacing a certificate, mind that Postfix requires the SSL certificate and Intermediate CA need to be in a single file, as stated and explained here: https://knowledge.digicert.com/solution/SO13616.html .
+If the certificate files are changed on /etc/ssl/certs this command should be ran to update the hashes:
+```
+update-ca-certificates --fresh
 ```
 
 
